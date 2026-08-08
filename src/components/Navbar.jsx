@@ -6,6 +6,10 @@ import { useLanguage } from "../context/LanguageContext";
 import { RESUME_FILE } from "../constants";
 import "./Navbar.css";
 
+// Mobile menu collapse duration. Shared by the exit transition and the
+// navigation delay below so the two can never drift apart.
+const MENU_EXIT_S = 0.26;
+
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const { t, toggleLanguage, isRtl } = useLanguage();
@@ -38,8 +42,19 @@ export default function Navbar() {
   }, [t]);
 
   const go = (id) => {
-    setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const scroll = () => el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (open) {
+      // Starting a smooth scroll while the menu is still collapsing cancels
+      // the scroll, so close first and navigate once it has settled.
+      setOpen(false);
+      setTimeout(scroll, MENU_EXIT_S * 1000 + 40);
+    } else {
+      scroll();
+    }
   };
 
   return (
@@ -110,7 +125,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: MENU_EXIT_S, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="navbar-mobile-inner">
               {t.nav.links.map((link, i) => (
