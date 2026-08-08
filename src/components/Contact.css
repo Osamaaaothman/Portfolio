@@ -1,0 +1,111 @@
+.ct-main {
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  padding: var(--space-lg) var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.ct-cmd {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.ct-email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.ct-email {
+  font-size: clamp(1.15rem, 0.75rem + 2.1vw, 2.75rem);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  word-break: break-all;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.ct-email:hover {
+  border-bottom-color: var(--accent);
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.ct-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.35rem var(--space-md);
+  border-inline-end: 1px solid var(--border);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.ct-tile:last-child { border-inline-end: 0; }
+
+.ct-tile:hover { background: var(--bg-3); }
+
+.ct-tile-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+}
+
+.ct-tile-value {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.ct-tile-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ct-tile-wa:hover {
+  background: rgba(37, 211, 102, 0.12);
+}
+
+.ct-tile-wa .ct-tile-value svg {
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.icon-btn-wa:hover {
+  border-color: #25d366;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.12);
+}
+
+.ct-social {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media (max-width: 1000px) {
+  .ct-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .ct-tile:nth-child(2n) { border-inline-end: 0; }
+  .ct-tile:nth-child(-n + 2) { border-bottom: 1px solid var(--border); }
+}
+
+@media (max-width: 760px) {
+  .ct-grid { grid-template-columns: 1fr; }
+
+  .ct-tile {
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ct-tile:last-child { border-bottom: 0; }
+}

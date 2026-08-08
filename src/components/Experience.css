@@ -1,0 +1,127 @@
+.xp-list {
+  border-top: 1px solid var(--border);
+}
+
+.xp-item {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.xp-item.is-current::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(var(--space-md) * -1);
+  width: 2px;
+  background: var(--accent);
+}
+
+.xp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.xp-period {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.xp-location {
+  color: var(--text-3);
+  font-size: 0.8rem;
+}
+
+.xp-live {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.xp-role {
+  font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.xp-company {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.xp-company span {
+  opacity: 0.6;
+  margin-inline-end: 0.15rem;
+}
+
+.xp-summary {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  max-width: 70ch;
+}
+
+.xp-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.xp-bullets li {
+  position: relative;
+  padding-inline-start: 1.5rem;
+  color: var(--text-2);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  max-width: 78ch;
+}
+
+.xp-bullets li::before {
+  content: "▸";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--accent);
+}
+
+[dir="rtl"] .xp-bullets li::before {
+  content: "◂";
+}
+
+.xp-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .xp-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .xp-side {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .xp-live { margin-top: 0; }
+
+  .xp-item.is-current::before {
+    inset-inline-start: calc(var(--space-sm) * -1);
+  }
+}
