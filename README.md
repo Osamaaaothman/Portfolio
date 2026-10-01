@@ -35,4 +35,4 @@ src/
 
 ## Author
 
-[Osama Othman](https://github.com/Osamaaaothman) · [LinkedIn](https://www.linkedin.com/in/osama3mmar)
+[Osama Othman](https://github.com/Osamaaaothman) · [LinkedIn](https://www.linkedin.com/in/osamaaothman)
