@@ -1,51 +1,36 @@
-import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
-import GridBackdrop from "./components/GridBackdrop";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
+import Now from "./components/Now";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import Education from "./components/Education";
+import Skills from "./components/Skills";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-
-function SkipLink() {
-  const { language } = useLanguage();
-  return (
-    <a href="#main" className="skip-link">
-      {language === "ar" ? "تخطَّ إلى المحتوى الرئيسي" : "Skip to main content"}
-    </a>
-  );
-}
 
 function Layout() {
+  const { language } = useLanguage();
   return (
     <>
-      <SkipLink />
-      <GridBackdrop />
+      <a href="#main" className="skip-link">
+        {language === "ar" ? "تخطَّ إلى المحتوى" : "Skip to content"}
+      </a>
       <Navbar />
       <main id="main">
         <Hero />
-        <About />
-        <Skills />
+        <Now />
         <Experience />
         <Projects />
-        <Education />
+        <Skills />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <Layout />
-      </LanguageProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <Layout />
+    </LanguageProvider>
   );
 }

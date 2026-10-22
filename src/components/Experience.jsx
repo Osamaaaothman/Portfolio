@@ -1,58 +1,34 @@
-import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import SectionHeading from "./SectionHeading";
-import "./Experience.css";
+import { Reveal, SectionHeader, Tags } from "./ui";
 
 export default function Experience() {
   const { t } = useLanguage();
-  const e = t.experience;
+  const x = t.experience;
 
   return (
-    <section id="experience" className="section">
+    <section className="section" id="experience">
       <div className="container">
-        <SectionHeading index="03" eyebrow={e.eyebrow} title={e.title} />
-
-        <div className="xp-list">
-          {e.items.map((item, i) => (
-            <motion.article
-              className={`xp-item ${item.current ? "is-current" : ""}`}
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-70px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="xp-side">
-                <span className="xp-period">{item.period}</span>
-                <span className="xp-location">{item.location}</span>
-                {item.current && <span className="xp-live">● live</span>}
+        <SectionHeader eyebrow={x.eyebrow} title={x.title} />
+        <ol className="timeline">
+          {x.items.map((job) => (
+            <Reveal as="li" key={job.id} className={`job ${job.current ? "job-current" : ""}`}>
+              <div className="job-side">
+                <span className="job-period">{job.period}</span>
+                {job.current && <span className="badge-live"><span className="dot" />{x.present}</span>}
               </div>
-
-              <div className="xp-main">
-                <h3 className="xp-role">{item.role}</h3>
-                <p className="xp-company">
-                  <span>@</span>
-                  {item.company}
+              <div className="job-body">
+                <h3 className="job-role">{job.role}</h3>
+                <p className="job-company">
+                  {job.company} <span className="muted">· {job.type}</span>
                 </p>
-                <p className="xp-summary">{item.summary}</p>
-
-                <ul className="xp-bullets">
-                  {item.bullets.map((b, bi) => (
-                    <li key={bi}>{b}</li>
-                  ))}
+                <ul className="job-bullets">
+                  {job.bullets.map((b) => <li key={b}>{b}</li>)}
                 </ul>
-
-                <div className="xp-tech">
-                  {item.tech.map((tech) => (
-                    <span className="tag" key={tech}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                <Tags items={job.tech} />
               </div>
-            </motion.article>
+            </Reveal>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

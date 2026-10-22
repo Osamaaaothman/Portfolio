@@ -1,147 +1,85 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Languages, Download } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import { Languages, Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { RESUME_FILE } from "../constants";
-import "./Navbar.css";
-
-// Mobile menu collapse duration. Shared by the exit transition and the
-// navigation delay below so the two can never drift apart.
-const MENU_EXIT_S = 0.26;
+import ResumeMenu from "./ResumeMenu";
+import Logo from "./Logo";
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
   const { t, toggleLanguage, isRtl } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const ids = t.nav.links.map((l) => l.id);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 16);
+      const line = window.innerHeight * 0.4;
+      let current = "";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      setActive(current);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const sections = t.nav.links
-      .map((l) => document.getElementById(l.id))
-      .filter(Boolean);
-    if (!sections.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
   }, [t]);
 
-  const go = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+  }, [open]);
 
-    const scroll = () => el.scrollIntoView({ behavior: "smooth", block: "start" });
-
-    if (open) {
-      // Starting a smooth scroll while the menu is still collapsing cancels
-      // the scroll, so close first and navigate once it has settled.
-      setOpen(false);
-      setTimeout(scroll, MENU_EXIT_S * 1000 + 40);
-    } else {
-      scroll();
-    }
-  };
+  const links = t.nav.links.map((l) => (
+    <a
+      key={l.id}
+      href={`#${l.id}`}
+      className={active === l.id ? "is-active" : ""}
+      onClick={() => setOpen(false)}
+    >
+      {l.label}
+    </a>
+  ));
 
   return (
-    <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
-      <div className="navbar-inner container">
-        <a
-          href="#top"
-          className="navbar-logo"
-          onClick={(e) => {
-            e.preventDefault();
-            go("top");
-          }}
-        >
-          <i>~/</i>osama-othman
+    <header className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
+      <div className="nav-inner container">
+        <a href="#top" className="nav-logo" aria-label="Osama Othman">
+          <Logo />
+          <span className="logo-text">Osama Othman</span>
         </a>
 
-        <nav className="navbar-links" aria-label="Primary">
-          {t.nav.links.map((link, i) => (
-            <button
-              key={link.id}
-              className={`navbar-link ${active === link.id ? "is-active" : ""}`}
-              onClick={() => go(link.id)}
-            >
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              {link.label}
-            </button>
-          ))}
-        </nav>
+        <nav className="nav-links" aria-label="Primary">{links}</nav>
 
-        <div className="navbar-actions">
-          <a href={RESUME_FILE} download className="btn btn-ghost navbar-resume">
-            <Download size={15} />
-            {t.nav.resume}
-          </a>
-
+        <div className="nav-actions">
+          <ResumeMenu className="hide-sm" />
           <button
             className="icon-btn"
             onClick={toggleLanguage}
-            aria-label={isRtl ? "التبديل إلى الإنجليزية" : "Switch to Arabic"}
+            aria-label={isRtl ? "Switch to English" : "التبديل إلى العربية"}
             title={t.langSwitchLabel}
           >
-            <Languages size={17} />
+            <Languages size={16} />
+            <span className="lang-label">{t.langSwitchLabel}</span>
           </button>
-
           <button
-            className="icon-btn"
-            onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
-          >
-            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-          </button>
-
-          <button
-            className="icon-btn navbar-burger"
+            className="icon-btn nav-burger"
             onClick={() => setOpen((o) => !o)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t.nav.close : t.nav.menu}
             aria-expanded={open}
           >
-            {open ? <X size={17} /> : <Menu size={17} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="navbar-mobile"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: MENU_EXIT_S, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="navbar-mobile-inner">
-              {t.nav.links.map((link, i) => (
-                <button
-                  key={link.id}
-                  className={`navbar-mobile-link ${active === link.id ? "is-active" : ""}`}
-                  onClick={() => go(link.id)}
-                >
-                  <span>{String(i + 1).padStart(2, "0")}</span>
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && (
+        <div className="nav-mobile">
+          <nav aria-label="Mobile">{links}</nav>
+          <ResumeMenu />
+        </div>
+      )}
     </header>
   );
 }

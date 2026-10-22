@@ -5,15 +5,10 @@
   <script>
     (function () {
       try {
-        var theme = localStorage.getItem("theme");
-        if (theme !== "light" && theme !== "dark") {
-          theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-        }
         var lang = localStorage.getItem("language");
         if (lang !== "en" && lang !== "ar") {
           lang = navigator.language && navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en";
         }
-        document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.setAttribute("lang", lang);
         document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
       } catch (e) {}
@@ -28,10 +23,10 @@
 
   <title>Osama Othman — Full-Stack Software Engineer</title>
   <meta name="description"
-    content="Full-Stack Software Engineer in Riyadh. I design relational databases, ship secured REST APIs in ASP.NET Core and Node.js, and build React interfaces that hold up in production." />
+    content="Full-Stack Software Engineer in Riyadh — Full-Stack Developer at the change cue. I build production systems end to end with ASP.NET Core, Node.js/NestJS and React." />
   <meta name="author" content="Osama Ammar Othman" />
-  <meta name="theme-color" content="#050807" />
-  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="color-scheme" content="dark" />
 
   <!-- Open Graph (WhatsApp, LinkedIn, Facebook, Slack) -->
   <meta property="og:type" content="website" />
@@ -39,7 +34,7 @@
   <meta property="og:url" content="https://os4ma.me/" />
   <meta property="og:title" content="Osama Othman — Full-Stack Software Engineer" />
   <meta property="og:description"
-    content="I design relational databases, ship secured REST APIs in ASP.NET Core and Node.js, and build React interfaces that hold up in production. Based in Riyadh." />
+    content="Full-Stack Developer at the change cue. I build production systems end to end with ASP.NET Core, Node.js/NestJS and React. Based in Riyadh." />
   <meta property="og:image" content="https://os4ma.me/og-image.png" />
   <meta property="og:image:secure_url" content="https://os4ma.me/og-image.png" />
   <meta property="og:image:type" content="image/png" />
@@ -53,34 +48,49 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Osama Othman — Full-Stack Software Engineer" />
   <meta name="twitter:description"
-    content="I design relational databases, ship secured REST APIs in ASP.NET Core and Node.js, and build React interfaces that hold up in production. Based in Riyadh." />
+    content="Full-Stack Developer at the change cue. I build production systems end to end with ASP.NET Core, Node.js/NestJS and React. Based in Riyadh." />
   <meta name="twitter:image" content="https://os4ma.me/og-image.png" />
   <meta name="twitter:image:alt" content="Osama Othman — Full-Stack Software Engineer, Riyadh" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Osama Ammar Othman",
+      "@id": "https://os4ma.me/#person",
+      "name": "Osama Othman",
+      "alternateName": ["Osama Ammar Othman", "Osama Ammar", "أسامة عثمان", "أسامة عمار عثمان"],
+      "description": "Full-Stack Software Engineer in Riyadh building production systems with ASP.NET Core, Node.js, NestJS and React.",
       "url": "https://os4ma.me/",
       "image": "https://os4ma.me/og-image.png",
       "jobTitle": "Full-Stack Software Engineer",
+      "worksFor": { "@type": "Organization", "name": "the change cue" },
+      "nationality": "Jordanian",
       "email": "mailto:osamaammarothman@gmail.com",
       "telephone": "+966530031266",
       "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "An-Najah National University" },
       "knowsLanguage": ["ar", "en"],
-      "knowsAbout": ["ASP.NET Core", "React", "Node.js", "SQL Server", "Entity Framework Core", "REST APIs"],
+      "knowsAbout": ["ASP.NET Core", "Node.js", "NestJS", "React", "TypeScript", "PostgreSQL", "SQL Server", "Docker", "AWS", "ERP"],
       "sameAs": [
         "https://github.com/Osamaaaothman",
         "https://www.linkedin.com/in/osamaaothman/"
       ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://os4ma.me/",
+      "name": "Osama Othman — Full-Stack Software Engineer",
+      "inLanguage": ["en", "ar"],
+      "mainEntity": { "@id": "https://os4ma.me/#person" }
     }
   </script>
 </head>

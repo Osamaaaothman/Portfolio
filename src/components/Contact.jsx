@@ -1,91 +1,61 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Copy, Check, ArrowRight } from "lucide-react";
+import { ArrowUp, Copy, Check, Mail, Phone } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import SectionHeading from "./SectionHeading";
+import { LINKS } from "../constants";
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from "./BrandIcons";
-import { WHATSAPP_URL } from "../constants";
-import "./Contact.css";
+import { Reveal } from "./ui";
 
 export default function Contact() {
   const { t } = useLanguage();
   const c = t.contact;
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
+  const copy = async () => {
     try {
       await navigator.clipboard.writeText(c.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* clipboard unavailable */
+      window.location.href = `mailto:${c.email}`;
     }
   };
 
   return (
-    <section id="contact" className="section">
-      <div className="container">
-        <SectionHeading index="06" eyebrow={c.eyebrow} title={c.title} subtitle={c.subtitle} />
+    <>
+      <section className="section contact" id="contact">
+        <div className="contact-glow" aria-hidden="true" />
+        <div className="container contact-inner">
+          <Reveal>
+            <p className="eyebrow">{c.eyebrow}</p>
+            <h2 className="contact-title">{c.title}</h2>
+            <p className="section-subtitle">{c.subtitle}</p>
+          </Reveal>
 
-        <motion.div
-          className="ct-main"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="prompt ct-cmd">
-            <i>$</i> mail -s &quot;hello&quot;
-          </p>
-          <div className="ct-email-row">
-            <a href={`mailto:${c.email}`} className="ct-email">
-              {c.email}
+          <Reveal delay={0.08} className="contact-email">
+            <a href={`mailto:${c.email}`} className="btn btn-primary">
+              <Mail size={16} /> {c.emailCta}
             </a>
-            <button className="icon-btn" onClick={handleCopy} aria-label={copied ? c.copied : c.copy}>
-              {copied ? <Check size={17} /> : <Copy size={17} />}
+            <button className="btn btn-ghost" onClick={copy}>
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+              <span dir="ltr">{copied ? c.copied : c.email}</span>
             </button>
-          </div>
-          <a href={`mailto:${c.email}`} className="btn btn-primary ct-cta">
-            {c.ctaEmail}
-            <ArrowRight size={17} className="flip-rtl" />
-          </a>
-        </motion.div>
+          </Reveal>
 
-        <motion.div
-          className="ct-grid"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ct-tile ct-tile-wa">
-            <span className="ct-tile-label">{c.whatsappLabel}</span>
-            <span className="ct-tile-value">
-              <WhatsappIcon size={16} />
-              {c.phone}
-            </span>
-          </a>
-          <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="ct-tile">
-            <span className="ct-tile-label">{c.phoneLabel}</span>
-            <span className="ct-tile-value">{c.phone}</span>
-          </a>
-          <div className="ct-tile">
-            <span className="ct-tile-label">{c.locationLabel}</span>
-            <span className="ct-tile-value">{c.location}</span>
-          </div>
-          <div className="ct-tile ct-social">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="icon-btn icon-btn-wa" aria-label="WhatsApp">
-              <WhatsappIcon size={18} />
-            </a>
-            <a href="https://github.com/Osamaaaothman" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="GitHub">
-              <GithubIcon size={18} />
-            </a>
-            <a href="https://www.linkedin.com/in/osamaaothman/" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn">
-              <LinkedinIcon size={18} />
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          <Reveal delay={0.12} className="contact-links">
+            <a href={LINKS.whatsapp} target="_blank" rel="noreferrer"><WhatsappIcon size={16} />{c.whatsapp}</a>
+            <a href={LINKS.linkedin} target="_blank" rel="noreferrer"><LinkedinIcon size={16} />{c.linkedin}</a>
+            <a href={LINKS.github} target="_blank" rel="noreferrer"><GithubIcon size={16} />{c.github}</a>
+            <a href={LINKS.phone}><Phone size={16} /><span dir="ltr">{c.phone}</span></a>
+          </Reveal>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container footer-inner">
+          <span>© {new Date().getFullYear()} · {t.footer.text}</span>
+          <a href="#top">{t.footer.backToTop} <ArrowUp size={14} /></a>
+        </div>
+      </footer>
+    </>
   );
 }

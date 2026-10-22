@@ -1,41 +1,41 @@
-import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import SectionHeading from "./SectionHeading";
-import "./Skills.css";
+import { Card, Reveal, SectionHeader, Tags } from "./ui";
 
 export default function Skills() {
   const { t } = useLanguage();
   const s = t.skills;
+  const c = t.credentials;
 
   return (
-    <section id="skills" className="section">
+    <section className="section" id="skills">
       <div className="container">
-        <SectionHeading index="02" eyebrow={s.eyebrow} title={s.title} subtitle={s.subtitle} />
-
-        <div className="skills-table">
-          {s.categories.map((cat, i) => (
-            <motion.div
-              className="skills-row"
-              key={cat.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="skills-row-head">
-                <span className="skills-row-num">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="skills-row-title">{cat.title}</h3>
-              </div>
-              <div className="skills-row-items">
-                {cat.items.map((item) => (
-                  <span className="tag" key={item}>
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+        <SectionHeader eyebrow={s.eyebrow} title={s.title} />
+        <div className="skills-grid">
+          {s.groups.map((g, i) => (
+            <Reveal key={g.title} delay={(i % 3) * 0.05}>
+              <Card className="skill-card">
+                <h3 className="skill-title">{g.title}</h3>
+                <Tags items={g.items} />
+              </Card>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal className="creds">
+          <p className="eyebrow">{c.eyebrow}</p>
+          <div className="creds-grid">
+            <div className="cred cred-degree">
+              <h3>{c.degree.title}</h3>
+              <p className="muted">{c.degree.school} · {c.degree.period}</p>
+            </div>
+            {c.items.map((it) => (
+              <div className="cred" key={it.title}>
+                <h3>{it.title}</h3>
+                <p className="muted">{it.org} · {it.year}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
