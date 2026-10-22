@@ -214,7 +214,7 @@ export const ar = {
       { title: "البيانات", items: ["PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Prisma", "EF Core", "Redis"] },
       { title: "السحابة و DevOps", items: ["Docker", "AWS (RDS)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
       { title: "الذكاء الاصطناعي والتكاملات", items: ["OpenAI API", "LangGraph", "FastAPI", "Stripe", "Cloudinary", "n8n"] },
-      { title: "المعمارية و ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "محاسبة القيد المزدوج", "المطابقة الثلاثية", "Dynamics 365 F&O"] },
+      { title: "المعمارية و ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "Dynamics 365 F&O"] },
     ],
   },
 

@@ -214,7 +214,7 @@ export const en = {
       { title: "Data", items: ["PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Prisma", "EF Core", "Redis"] },
       { title: "Cloud & DevOps", items: ["Docker", "AWS (RDS)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
       { title: "AI & Integrations", items: ["OpenAI API", "LangGraph", "FastAPI", "Stripe", "Cloudinary", "n8n"] },
-      { title: "Architecture & ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "Double-entry accounting", "Three-way matching", "Dynamics 365 F&O"] },
+      { title: "Architecture & ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "Dynamics 365 F&O"] },
     ],
   },
 
