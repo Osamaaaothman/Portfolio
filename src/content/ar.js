@@ -35,7 +35,7 @@ export const ar = {
     stats: [
       { value: "+700", label: "مساهمة على GitHub خلال السنة الماضية" },
       { value: "5", label: "منتجات بنيتها من البداية للنهاية" },
-      { value: "ذهبية", label: "شهادة Kanz AI Hackathon · ‏100 ألف مشارك" },
+      { value: "ذهبية", label: "شهادة AI Showcase · هاكاثون Kanz للذكاء الاصطناعي 2026" },
       { value: "2", label: "بيئتا عمل إنتاجيتان: .NET و Node.js" },
     ],
   },
@@ -92,6 +92,18 @@ export const ar = {
           "تعلّمت دورات العمل المالية والتشغيلية في مجموعة قابضة تضم شركات صناعية وعقارية وتجارية.",
         ],
         tech: ["Dynamics 365", "Finance & Operations", "ERP"],
+      },
+      {
+        id: "hope",
+        company: "The Hope International",
+        role: "متدرّب تعلّم آلة",
+        type: "تدريب · عن بُعد",
+        period: "مايو 2026 – أغسطس 2026",
+        bullets: [
+          "أكملت برنامجاً من 60 ساعة في Python وتعلّم الآلة والذكاء الاصطناعي ضمن قسم تعلّم الآلة.",
+          "اكتسبت خبرة عملية في استخدام Python لمعالجة البيانات وبناء نماذج تعلّم الآلة.",
+        ],
+        tech: ["Python", "Machine Learning", "AI"],
       },
       {
         id: "truetime",
@@ -214,8 +226,8 @@ export const ar = {
       period: "2021 – 2026",
     },
     items: [
-      { title: "Kanz AI Hackathon 2026 — شهادة AI Showcase الذهبية", org: "SaudiPlot AI · ‏100,000 مشارك", year: "2026" },
-      { title: "الذكاء الاصطناعي وتعلّم الآلة (60 ساعة)", org: "The Hope International", year: "2026" },
+      { title: "Kanz AI Hackathon 2026 — شهادة AI Showcase الذهبية", org: "SaudiPlot AI", year: "2026" },
+      { title: "موسوعة Guinness — أكبر درس ذكاء اصطناعي أونلاين", org: "Kanz AI · ‏14,075 مشاركاً", year: "2026" },
       { title: "تطوير الويب Full-Stack ‏(200 ساعة)", org: "Knowledge Academy", year: "2025" },
     ],
   },

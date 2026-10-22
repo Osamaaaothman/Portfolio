@@ -35,7 +35,7 @@ export const en = {
     stats: [
       { value: "700+", label: "GitHub contributions in the past year" },
       { value: "5", label: "Products shipped end to end" },
-      { value: "Gold", label: "Kanz AI Hackathon showcase · 100K participants" },
+      { value: "Gold", label: "AI Showcase certificate · Kanz AI Hackathon 2026" },
       { value: "2", label: "Production stacks: .NET & Node.js" },
     ],
   },
@@ -92,6 +92,18 @@ export const en = {
           "Learned enterprise finance and operations workflows across a holding group spanning industrial, real estate and trading businesses.",
         ],
         tech: ["Dynamics 365", "Finance & Operations", "ERP"],
+      },
+      {
+        id: "hope",
+        company: "The Hope International",
+        role: "Machine Learning Trainee",
+        type: "Internship · Remote",
+        period: "May 2026 – Aug 2026",
+        bullets: [
+          "Completed a 60-hour Python, Machine Learning & AI program in the machine learning department.",
+          "Built hands-on experience with Python for data processing and machine learning model development.",
+        ],
+        tech: ["Python", "Machine Learning", "AI"],
       },
       {
         id: "truetime",
@@ -209,13 +221,13 @@ export const en = {
   credentials: {
     eyebrow: "Education & credentials",
     degree: {
-      title: "B.Eng, Computer Engineering",
+      title: "B.Sc. in Computer Engineering",
       school: "An-Najah National University",
       period: "2021 – 2026",
     },
     items: [
-      { title: "Kanz AI Hackathon 2026 — Gold AI Showcase", org: "SaudiPlot AI · 100,000 participants", year: "2026" },
-      { title: "AI / Machine Learning (60h)", org: "The Hope International", year: "2026" },
+      { title: "Kanz AI Hackathon 2026 — Gold AI Showcase", org: "SaudiPlot AI", year: "2026" },
+      { title: "Guinness World Records — largest online AI lesson", org: "Kanz AI · 14,075 participants", year: "2026" },
       { title: "Full-Stack Web Development (200h)", org: "Knowledge Academy", year: "2025" },
     ],
   },
