@@ -1,4 +1,4 @@
-import { LINKS } from "../constants";
+﻿import { LINKS } from "../constants";
 
 export const en = {
   dir: "ltr",
@@ -34,7 +34,7 @@ export const en = {
     ctaSecondary: "View projects",
     stats: [
       { value: "700+", label: "GitHub contributions in the past year" },
-      { value: "6", label: "Products shipped end to end" },
+      { value: "5", label: "Products shipped end to end" },
       { value: "Gold", label: "Kanz AI Hackathon showcase · 100K participants" },
       { value: "2", label: "Production stacks: .NET & Node.js" },
     ],
@@ -136,7 +136,7 @@ export const en = {
       title: "Markaz",
       subtitle: "ERP-Lite for Saudi & Gulf businesses",
       description:
-        "A commercial accounting and ERP product, Arabic and English from day one. Every customer gets a fully isolated deployment — own database, own backend, own ZATCA keys — shipped as one Docker Compose bundle.",
+        "A commercial accounting and ERP product, Arabic and English from day one: general ledger, inventory, purchasing with three-way matching, sales, payments, ageing reports and invoice PDFs. Every customer gets a fully isolated deployment, shipped as one Docker Compose bundle.",
       highlights: [
         "Double-entry ledger with database-enforced integrity: deferred triggers guarantee debit = credit at commit and reject posting into closed periods.",
         "Append-only audit log and journals through a restricted Postgres role with no UPDATE or DELETE grant.",
@@ -158,15 +158,6 @@ export const en = {
         links: { live: "https://saudi-plot-frontend.vercel.app", github: LINKS.repo("Saudi-Plot-Frontend") },
       },
       {
-        id: "gweb",
-        tagline: "Fintech · Serverless .NET",
-        title: "Merchant Onboarding & Underwriting",
-        description:
-          "Intake and decision support for merchant onboarding: documents, MCC classification and an explainable risk result — an ASP.NET Core API on AWS Lambda with a 45-second deadline budget.",
-        tech: ["C#", ".NET", "AWS Lambda", "DynamoDB", "S3", "AWS SAM", "React"],
-        links: { github: LINKS.repo("gweb-merchant-onboarding") },
-      },
-      {
         id: "dental",
         tagline: "Live · Built for a real practice",
         title: "Dental Clinic Manager",
@@ -184,13 +175,20 @@ export const en = {
         tech: ["ASP.NET Core", "EF Core", "SQL Server", "React", "JWT"],
         links: {},
       },
+      {
+        id: "elearning",
+        tagline: "Graduation project",
+        title: "AI E-Learning Platform",
+        description:
+          "Courses, quizzes and dashboards for 4 roles, with an OpenAI quiz engine that writes questions from uploaded course material.",
+        tech: ["Node.js", "Express", "MySQL", "React", "React Native", "OpenAI"],
+        links: { github: LINKS.repo("Software-GP-FE-BE") },
+      },
     ],
     moreTitle: "More on GitHub",
     more: [
-      { name: "AI E-Learning", text: "Graduation project: 4 roles, OpenAI quiz generation, React + React Native.", url: LINKS.repo("Software-GP-FE-BE") },
       { name: "HealthPal", text: "Healthcare platform for 5 roles: anonymous consultations, video calls, donations.", url: LINKS.repo("Advance-Software-Full-Project") },
       { name: "NoteNest", text: "Notion-style notes app with a layered Express API and JWT auth.", url: LINKS.repo("NoteNest") },
-      { name: "KASHOP Mobile", text: "React Native shopping app with Expo Router and TypeScript.", url: LINKS.repo("KASHOP-Frontend-Mobile") },
       { name: "AI Maze Solver", text: "Perceptron-based ML pipeline with a live React visualization.", url: LINKS.repo("AI-Maze-Solver") },
     ],
   },
@@ -202,9 +200,9 @@ export const en = {
       { title: "Backend", items: ["Node.js", "NestJS", "Express", "ASP.NET Core", "REST · OpenAPI", "WebSockets", "JWT · RBAC"] },
       { title: "Frontend", items: ["React", "TypeScript", "React Native", "Vite", "Tailwind CSS", "Zustand", "i18n · RTL"] },
       { title: "Data", items: ["PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Prisma", "EF Core", "Redis"] },
-      { title: "Cloud & DevOps", items: ["Docker", "AWS (Lambda, RDS, S3, DynamoDB)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
+      { title: "Cloud & DevOps", items: ["Docker", "AWS (RDS)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
       { title: "AI & Integrations", items: ["OpenAI API", "LangGraph", "FastAPI", "Stripe", "Cloudinary", "n8n"] },
-      { title: "Architecture & ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "Double-entry accounting", "ZATCA e-invoicing", "Dynamics 365 F&O"] },
+      { title: "Architecture & ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "Double-entry accounting", "Three-way matching", "Dynamics 365 F&O"] },
     ],
   },
 

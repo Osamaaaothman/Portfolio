@@ -1,4 +1,4 @@
-import { LINKS } from "../constants";
+﻿import { LINKS } from "../constants";
 
 export const ar = {
   dir: "rtl",
@@ -34,7 +34,7 @@ export const ar = {
     ctaSecondary: "شاهد المشاريع",
     stats: [
       { value: "+700", label: "مساهمة على GitHub خلال السنة الماضية" },
-      { value: "6", label: "منتجات بنيتها من البداية للنهاية" },
+      { value: "5", label: "منتجات بنيتها من البداية للنهاية" },
       { value: "ذهبية", label: "شهادة Kanz AI Hackathon · ‏100 ألف مشارك" },
       { value: "2", label: "بيئتا عمل إنتاجيتان: .NET و Node.js" },
     ],
@@ -136,7 +136,7 @@ export const ar = {
       title: "مركز",
       subtitle: "نظام ERP مبسّط لشركات السعودية والخليج",
       description:
-        "منتج تجاري للمحاسبة وتخطيط الموارد، بالعربية والإنجليزية من اليوم الأول. كل عميل يحصل على نسخة معزولة بالكامل: قاعدة بيانات وخلفية ومفاتيح ZATCA خاصة به، تُشحن كحزمة Docker Compose واحدة.",
+        "منتج تجاري للمحاسبة وتخطيط الموارد، بالعربية والإنجليزية من اليوم الأول: دفتر الأستاذ العام، المخزون، المشتريات مع المطابقة الثلاثية، المبيعات، المدفوعات، تقارير أعمار الديون، وفواتير PDF. كل عميل يحصل على نسخة معزولة بالكامل تُشحن كحزمة Docker Compose واحدة.",
       highlights: [
         "دفتر قيد مزدوج تضمن قاعدة البيانات سلامته: triggers مؤجلة تفرض تساوي المدين والدائن عند الـ commit وترفض الترحيل في الفترات المقفلة.",
         "سجل تدقيق وقيود يومية غير قابلة للتعديل عبر دور Postgres مقيّد لا يملك صلاحية UPDATE أو DELETE.",
@@ -158,15 +158,6 @@ export const ar = {
         links: { live: "https://saudi-plot-frontend.vercel.app", github: LINKS.repo("Saudi-Plot-Frontend") },
       },
       {
-        id: "gweb",
-        tagline: "تقنية مالية · .NET بدون خوادم",
-        title: "تسجيل التجار وتقييم المخاطر",
-        description:
-          "استقبال طلبات التجار ودعم القرار: المستندات، وتصنيف MCC، ونتيجة مخاطر قابلة للتفسير. ASP.NET Core API على AWS Lambda بحد زمني 45 ثانية لكل طلب.",
-        tech: ["C#", ".NET", "AWS Lambda", "DynamoDB", "S3", "AWS SAM", "React"],
-        links: { github: LINKS.repo("gweb-merchant-onboarding") },
-      },
-      {
         id: "dental",
         tagline: "مباشر · مبني لعيادة حقيقية",
         title: "نظام إدارة عيادة أسنان",
@@ -184,13 +175,20 @@ export const ar = {
         tech: ["ASP.NET Core", "EF Core", "SQL Server", "React", "JWT"],
         links: {},
       },
+      {
+        id: "elearning",
+        tagline: "مشروع التخرج",
+        title: "منصة تعليم بالذكاء الاصطناعي",
+        description:
+          "دورات واختبارات ولوحات تحكم لأربعة أدوار، مع محرك اختبارات من OpenAI يكتب الأسئلة من مواد الدورة المرفوعة.",
+        tech: ["Node.js", "Express", "MySQL", "React", "React Native", "OpenAI"],
+        links: { github: LINKS.repo("Software-GP-FE-BE") },
+      },
     ],
     moreTitle: "المزيد على GitHub",
     more: [
-      { name: "AI E-Learning", text: "مشروع التخرج: أربعة أدوار، توليد اختبارات بـ OpenAI، و React + React Native.", url: LINKS.repo("Software-GP-FE-BE") },
       { name: "HealthPal", text: "منصة صحية لخمسة أدوار: استشارات مجهولة الهوية، مكالمات فيديو، وتبرعات.", url: LINKS.repo("Advance-Software-Full-Project") },
       { name: "NoteNest", text: "تطبيق ملاحظات بأسلوب Notion مع Express API بطبقات ومصادقة JWT.", url: LINKS.repo("NoteNest") },
-      { name: "KASHOP Mobile", text: "تطبيق تسوق React Native مع Expo Router و TypeScript.", url: LINKS.repo("KASHOP-Frontend-Mobile") },
       { name: "AI Maze Solver", text: "خط تعلّم آلي مبني على Perceptron مع عرض تفاعلي بـ React.", url: LINKS.repo("AI-Maze-Solver") },
     ],
   },
@@ -202,9 +200,9 @@ export const ar = {
       { title: "الخلفية", items: ["Node.js", "NestJS", "Express", "ASP.NET Core", "REST · OpenAPI", "WebSockets", "JWT · RBAC"] },
       { title: "الواجهة", items: ["React", "TypeScript", "React Native", "Vite", "Tailwind CSS", "Zustand", "i18n · RTL"] },
       { title: "البيانات", items: ["PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Prisma", "EF Core", "Redis"] },
-      { title: "السحابة و DevOps", items: ["Docker", "AWS (Lambda, RDS, S3, DynamoDB)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
+      { title: "السحابة و DevOps", items: ["Docker", "AWS (RDS)", "GitHub Actions", "Vercel", "Railway", "Supabase"] },
       { title: "الذكاء الاصطناعي والتكاملات", items: ["OpenAI API", "LangGraph", "FastAPI", "Stripe", "Cloudinary", "n8n"] },
-      { title: "المعمارية و ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "محاسبة القيد المزدوج", "الفوترة الإلكترونية ZATCA", "Dynamics 365 F&O"] },
+      { title: "المعمارية و ERP", items: ["Modular monolith", "N-Tier · Repository", "Outbox · Idempotency", "محاسبة القيد المزدوج", "المطابقة الثلاثية", "Dynamics 365 F&O"] },
     ],
   },
 
